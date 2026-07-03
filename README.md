@@ -1,9 +1,7 @@
 # 🚀 공지캐치 (Notice-Catch)
 
-> ### **"흩어진 대학 공지, 이제 놓치지 말고 다 캐치하세요!"**
-> 대학 공지사항을 효율적으로 모아 유저 맞춤형 피드와 스마트한 알림을 제공하는 안드로이드 앱 서비스입니다.
-
----
+대학 공지사항을 효율적으로 모아 유저 맞춤형 피드와 스마트한 알림을 제공하는 안드로이드 앱 서비스입니다.
+<br><br>
 
 ## 🛠️ Tech Stack
 
@@ -11,8 +9,7 @@
 | :--- | :--- |
 | **Backend** | ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=flat-and-square&logo=java&logoColor=white) ![Spring Boot](https://img.shields.io/badge/spring%20boot-%236DB33F.svg?style=flat-and-square&logo=spring&logoColor=white) |
 | **Infrastructure** | ![Docker](https://img.shields.io/badge/docker-%232496ED.svg?style=flat-and-square&logo=docker&logoColor=white) |
-
----
+<br><br>
 
 ## ✨ Key Features (서비스 기능 정의)
 
