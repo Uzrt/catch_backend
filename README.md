@@ -52,7 +52,7 @@
 
 **Step 1. 저장소 복사하기**
 ```bash
-git clone [https://github.com/](https://github.com/)[유저이름]/notice-catch.git
+git clone [git repository 주소]
 cd notice-catch
 ```
 
