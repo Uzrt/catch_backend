@@ -8,7 +8,7 @@
 | Layer | Technology |
 | :--- | :--- |
 | **Backend** | ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=flat-and-square&logo=java&logoColor=white) ![Spring Boot](https://img.shields.io/badge/spring%20boot-%236DB33F.svg?style=flat-and-square&logo=spring&logoColor=white) |
-| **Infrastructure** | ![Docker](https://img.shields.io/badge/docker-%232496ED.svg?style=flat-and-square&logo=docker&logoColor=white) |
+| **Infrastructure** | ![Docker](https://img.shields.io/badge/docker-%232496ED.svg?style=flat-and-square&logo=docker&logoColor=white) ![MariaDB](https://img.shields.io/badge/mariadb-%23003545.svg?style=flat-and-square&logo=mariadb&logoColor=white) |
 
 <br>
 
@@ -91,7 +91,7 @@ chmod +x gradlew
 
 **로컬 데이터베이스 접속 정보 (MariaDB):**
 * **Host:** `localhost`
-* **Port:** `3307`
+* **Port:** `3306`
 * **Database:** `notice_catch`
 * **Username / Password:** `catch_user` / `catch_password`
 
