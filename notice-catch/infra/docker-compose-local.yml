@@ -1,0 +1,18 @@
+services:
+  catch-db:
+    image: mariadb:10.11
+    container_name: catch-mariadb-local
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: root_password
+      MARIADB_DATABASE: notice_catch
+      MARIADB_USER: catch_user
+      MARIADB_PASSWORD: catch_password
+      TZ: Asia/Seoul
+    volumes:
+      - mariadb_local_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  mariadb_local_data:
