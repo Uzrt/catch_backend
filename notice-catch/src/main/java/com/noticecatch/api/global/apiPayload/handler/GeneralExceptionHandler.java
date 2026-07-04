@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class GeneralExceptionAdvice {
+public class GeneralExceptionHandler {
     @ExceptionHandler(ProjectException.class)
     public ResponseEntity<ApiResponse<Void>> handleUserException(ProjectException e) {
         BaseErrorCode errorCode = e.getErrorCode();
@@ -44,7 +44,7 @@ public class GeneralExceptionAdvice {
         });
 
         // 프로젝트 공통 에러 코드 규격 활용
-        BaseErrorCode errorCode = GeneralErrorCode.BAQ_REQUEST;
+        BaseErrorCode errorCode = GeneralErrorCode.BAD_REQUEST;
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(ApiResponse.onFailure(errorCode, errors));

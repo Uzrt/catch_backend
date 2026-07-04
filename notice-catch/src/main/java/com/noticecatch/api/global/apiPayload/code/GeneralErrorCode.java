@@ -10,7 +10,7 @@ import org.springframework.web.client.HttpClientErrorException;
 public enum GeneralErrorCode implements BaseErrorCode{
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR,
             "COMMON500", "서버 내부 오류가 발생했습니다."),
-    BAQ_REQUEST(HttpStatus.BAD_REQUEST,
+    BAD_REQUEST(HttpStatus.BAD_REQUEST,
             "COMMON400", "잘못된 요청입니다."),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED,
             "COMMON401", "인증되지 않았습니다."),
