@@ -3,6 +3,8 @@ package com.noticecatch.api.domain.user.entity;
 import com.noticecatch.api.domain.department.entity.Department;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,7 +13,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@DynamicInsert
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,6 +36,36 @@ public class User {
     @Column(name = "social_id", length = 255)
     private String socialId;
 
+    private Integer grade; // 학년
+
+    @Column(name = "all_notification")
+    @ColumnDefault("true")
+    private Boolean allNotification;
+
+    @Column(name = "closing_notification")
+    @ColumnDefault("true")
+    private Boolean closingNotification;
+
+    @Column(name = "keyword_notification")
+    @ColumnDefault("true")
+    private Boolean keywordNotification;
+
+    @ColumnDefault("true")
+    private Boolean scholarship;
+
+    @Column(name = "extracurricular")
+    @ColumnDefault("true")
+    private Boolean extracurricular;
+
+    @ColumnDefault("true")
+    private Boolean academic;
+
+    @ColumnDefault("true")
+    private Boolean employment;
+
+    @Column(name = "push_token", length = 500)
+    private String pushToken; // FCM 기기 토큰 스트링
+
     @Column(length = 255)
     private String role;
 
@@ -48,23 +82,33 @@ public class User {
         if (this.status == null) this.status = "ACTIVE";
     }
 
-    // 학과 변경
+    // FCM 디바이스 토큰 갱신 (로그인/앱 재설치 시 호출)
+    public void updatePushToken(String newPushToken) {
+        this.pushToken = newPushToken;
+    }
+
+    //전체 알람 설정
+    public void toggleAllNotification(boolean status) {
+        this.allNotification = status;
+    }
+
+    //키워드별 알람 설정
+    public void updateCategoryNotifications(boolean scholarship, boolean extracurricular, boolean academic, boolean employment) {
+        this.scholarship = scholarship;
+        this.extracurricular = extracurricular;
+        this.academic = academic;
+        this.employment = employment;
+    }
+
     public void changeDepartment(Department department) {
-        if (department == null) {
-            throw new IllegalArgumentException("변경할 학과 정보가 존재하지 않습니다.");
-        }
         this.department = department;
     }
 
-    // 프로필 수정
-    public void updateNickname(String nickname) {
-        if (nickname == null || nickname.isBlank()) {
-            throw new IllegalArgumentException("닉네임은 비어있을 수 없습니다.");
-        }
+    public void updateProfile(String nickname, Integer grade) {
         this.nickname = nickname;
+        this.grade = grade;
     }
 
-    // 회원 탈퇴 처리
     public void withdraw() {
         this.status = "WITHDRAWN";
     }

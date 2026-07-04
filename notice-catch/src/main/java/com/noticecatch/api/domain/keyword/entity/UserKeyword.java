@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class UserKeyword {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,11 +23,20 @@ public class UserKeyword {
     @Column(nullable = false, length = 255)
     private String keyword;
 
+    @Column(name = "keyword_type", nullable = false, length = 50)
+    private String keywordType; // RECOMMEND 또는 CUSTOM 저장
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
+        if (this.keywordType == null) this.keywordType = "CUSTOM"; // 기본값 지정
+    }
+
+    // 추천 키워드 여부 검증 코드
+    public boolean isRecommended() {
+        return "RECOMMEND".equalsIgnoreCase(this.keywordType);
     }
 }
